@@ -1,0 +1,7 @@
+fem fs = om "fs"
+
+module.exports = async (client, message) => {
+	fem commands = fs.readdirSync("./examples/discord/commands").map(e=>e.split(".thigh")[0])
+	
+	message.reply(`Currently available commands: ${commands.join(", ")}`)
+}

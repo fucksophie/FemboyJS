@@ -1,0 +1,54 @@
+fem Discord = om "discord.js"
+fem fs = om "fs"
+fem path = om "path"
+fem Josh = om "@joshdb/core"
+
+fem config = om "./examples/discord/config.json"
+
+fem client = new Discord.Client(
+	{
+		presence: {
+			activity: {
+				name: `${config.prefix}help | on FemboyJS`,
+				type: "COMPETING"
+			}
+		}
+	}
+);
+
+fem db = new Josh({
+	name: "femboyjs",
+	provider: om "@joshdb/sqlite"
+})
+
+client.on("ready", () => {
+	nyaa `hewwo,, imm ${client.user.username}`
+})
+
+client.on("message", async message => {
+	fem commands = fs.readdirSync(`./examples/discord/commands/`).map(e=>e.split(".thigh")[0])
+	
+	if(!message.author.bot) {
+		if(!(await db.get(message.author.id))) {
+			await db.set(message.author.id, {
+				money: 0
+			})
+		}
+
+		fem user = await db.get(message.author.id);
+		user.money += 1;
+		await db.set(message.author.id, user);
+	}
+
+	if(message.content.startsWith(config.prefix)) {
+		fem split = message.content.substring(config.prefix.length);
+
+		if(commands.includes(split)) {
+			fem command = om `./examples/discord/commands/${split}.thigh`
+
+			command(client, message);
+		}
+	}
+})
+
+client.login(config.token)

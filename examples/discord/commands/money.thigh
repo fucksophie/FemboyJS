@@ -1,0 +1,13 @@
+fem path = om "path"
+fem Josh = om "@joshdb/core"
+
+fem db = new Josh({
+	name: "femboyjs",
+	provider: om "@joshdb/sqlite"
+})
+
+module.exports = async (client, message) => {
+	const user = await db.get(message.author.id)
+
+	message.reply(`You currently have ${user.money}$!`)
+}
