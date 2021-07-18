@@ -20,3 +20,10 @@ heels_test.heels(test => {
 fem huff_test = [];
 huff_test.huff("huff_test succeeded")
 nyaa huff_test[0]
+
+
+fem go_test = () go {
+	nyaa "go_test succeeded"
+}
+
+go_test()

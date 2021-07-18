@@ -11,6 +11,9 @@ function parse(result) {
     // parse thigh's uwu, to function
     result = result.replace(/thigh (.*)\((.*)\) {\n/gm, "async function $1($2) {\n");
 
+    // parse go's (arrow functions)
+    result = result.replace(/ go /gm, `=>`)
+    
     // parse fems uwu, to let variable
     result = result.replace(/fem (.*) = /gm, "let $1 = ");
     

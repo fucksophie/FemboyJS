@@ -6,7 +6,7 @@ fem db = new Josh({
 	provider: om "@joshdb/sqlite"
 })
 
-module.exports = async (client, message) => {
+module.exports = async (client, message) go {
 	const user = await db.get(message.author.id)
 
 	message.reply(`You currently have ${user.money}$!`)
