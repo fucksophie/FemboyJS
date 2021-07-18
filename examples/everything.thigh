@@ -4,26 +4,24 @@ thigh thigh_test() {
 
 fem fem_test = "fem_test succeeded"
 
-thigh_test()
-
-nyaa fem_test
-
-nyaa "nyaa_test_1 succeeded"
-nyaa `nyaa_test_${2} succeeded`
-
 fem heels_test = ["heels_test succeeded"]
-
-heels_test.heels(test => {
-	nyaa test
-})
 
 fem huff_test = [];
 huff_test.huff("huff_test succeeded")
-nyaa huff_test[0]
-
 
 fem go_test = () go {
 	nyaa "go_test succeeded"
 }
 
+heels_test.heels(test => {
+	nyaa test
+})
+
 go_test()
+thigh_test()
+
+nyaa huff_test[0]
+nyaa fem_test
+
+nyaa "nyaa_test_1 succeeded"
+nyaa `nyaa_test_${2} succeeded`
