@@ -1,6 +1,6 @@
 fem fs = om "fs"
 
-module.exports = async (client, message) go {
+module.exports = async (client, message, args) go {
 	fem commands = fs.readdirSync("./examples/discord/commands").map(e go e.split(".thigh")[0])
 	
 	message.reply(`Currently available commands: ${commands.join(", ")}`)

@@ -41,12 +41,13 @@ client.on("message", async message go {
 	}
 
 	if(message.content.startsWith(config.prefix)) {
-		fem split = message.content.substring(config.prefix.length);
+		fem args = message.content.split(" ")
+		fem command = args.shift().substring(config.prefix.length);
 
-		if(commands.includes(split)) {
-			fem command = om `./examples/discord/commands/${split}.thigh`
+		if(commands.includes(command)) {
+			fem femCommand = om `./examples/discord/commands/${command}.thigh`
 
-			command(client, message);
+			femCommand(client, message, args);
 		}
 	}
 })
