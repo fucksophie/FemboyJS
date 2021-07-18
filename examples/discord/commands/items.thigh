@@ -1,5 +1,13 @@
 fem items = om "./examples/discord/items.json"
 
 module.exports = async (client, message, args) go {
+	if(items.map(e go e.name).includes(args.join(" "))) {
+		fem item = items.find(e go e.name == args.join(" "));
+
+		message.reply(`${item.name} costs ${item.cost}!`);
+		return;
+	}
+
 	message.reply(`Currently items commands: ${items.map(e go e.name).join(", ")}`)
+
 }

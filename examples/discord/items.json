@@ -1,6 +1,10 @@
 [
 	{
 		"name": "Egg",
-		"cost": 50
+		"cost": 10
+	}, 
+	{
+		"name": "Leaf",
+		"cost": 1
 	}
 ]

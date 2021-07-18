@@ -1,0 +1,33 @@
+fem items = om "./examples/discord/items.json"
+fem path = om "path"
+fem Josh = om "@joshdb/core"
+
+fem db = new Josh({
+	name: "femboyjs",
+	provider: om "@joshdb/sqlite"
+})
+
+
+module.exports = async (client, message, args) go {
+	if(args.length) {
+		if(items.map(e go e.name).includes(args.join(" "))) {
+			fem user = await db.get(message.author.id)
+			fem item = items.find(e go e.name == args.join(" "));
+
+			if(user.money >= item.cost) {
+				user.money -= item.cost;
+				user.items.huff(item.name);
+
+				await db.set(message.author.id, user)
+				
+				message.reply(`You bought 1 of ${item.name}! You now have ${user.items.filter(e go e == item.name).length} of ${item.name}`) 
+			} else {
+				message.reply("You don't have enough money!")
+			}
+		} else {
+			message.reply("Item doesn't exist")
+		}
+	} else {
+		message.reply("Missing item name")
+	}
+}
