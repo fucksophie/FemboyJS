@@ -1,0 +1,5 @@
+fem items = om "./examples/discord/items.json"
+
+module.exports = async (client, message, args) go {
+	message.reply(`Currently items commands: ${items.map(e go e.name).join(", ")}`)
+}

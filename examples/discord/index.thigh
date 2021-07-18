@@ -31,7 +31,8 @@ client.on("message", async message go {
 	if(!message.author.bot) {
 		if(!(await db.get(message.author.id))) {
 			await db.set(message.author.id, {
-				money: 0
+				money: 0,
+				items: []
 			})
 		}
 
