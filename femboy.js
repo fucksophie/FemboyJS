@@ -1,10 +1,28 @@
 const fs = require("fs");
+const readline = require('readline');
 
 if(process.argv.length == 3) {
     eval(parse(fs.readFileSync(process.argv[2]).toString()))
 } else {
-    // TODO: REPL
-    console.log("hello");
+    console.log("FemboyJS REPL!")
+
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
+
+    rl.prompt()
+
+    rl.on('line', (input) => {
+        try {
+            eval(parse(input))
+        } catch (error) {
+            console.log(`Experienced "${error}" on trying to run`)
+            console.log(parse(input))            
+        }
+        
+        rl.prompt()
+    });
 }
 
 function parse(result) {
@@ -13,7 +31,7 @@ function parse(result) {
 
     // parse go's (arrow functions)
     result = result.replace(/ go /gm, `=>`)
-    
+
     // parse fems uwu, to let variable
     result = result.replace(/fem (.*) = /gm, "let $1 = ");
     
